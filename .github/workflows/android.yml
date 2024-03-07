@@ -19,6 +19,8 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-npm-
+      env:
+        NODE_VERSION: 20
 
     - uses: actions/checkout@v4
     - name: set up JDK 11
@@ -31,4 +33,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build --stacktrace --debug
+      run: ./gradlew build
